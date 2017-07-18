@@ -10,6 +10,49 @@ body {
 	margin: 10% auto;
 	z-index: 100;
 	color: #ffffff;
+	border: 1px solid rgb(255,51,153); 
 	border-radius: 40px;
 	padding: 30px;
 }
+
+
+/****** MODAL STYLES ******/
+
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(255,51,153,0.4); 
+}
+
+
+.modal-content {
+    background-color: rgba(153,51,255, 0.4);
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid rgba(153,51,255, 0.4);
+    width: 80%;
+    max-height: 350px;
+    overflow: auto;
+    color: black;
+}
+
+.close {
+    color: rgb(0, 153, 153);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: rgb(255,51,153);
+    text-decoration: none;
+    cursor: pointer;
+} 
