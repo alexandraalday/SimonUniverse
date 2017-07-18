@@ -1,0 +1,15 @@
+body {
+	background: url('https://media.giphy.com/media/3qePHOEQYRPDG/giphy.gif') no-repeat;
+	background-size: cover;
+}
+
+.container {
+	background-color: rgba(0, 153, 153, 0.4);
+	height: 400px;
+	width: 80%;
+	margin: 10% auto;
+	z-index: 100;
+	color: #ffffff;
+	border-radius: 40px;
+	padding: 30px;
+}
