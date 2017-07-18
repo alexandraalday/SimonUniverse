@@ -4,11 +4,11 @@ A Simon and Steven Universe Mashup
 alexandraalday.github.io/
 
 #### explanations of the technologies used
-HTML, CSS, JavaScript, jQuery
+HTML, CSS, JavaScript, jQuery, Velocity JS(?)
 
 
 #### the approach taken/ technical details
-
+imported a local font - Crystal Universe
 
 
 #### installation instructions

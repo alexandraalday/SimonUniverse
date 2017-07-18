@@ -1,3 +1,10 @@
+/*help adding local font via stack overflow*/
+@font-face {   
+	font-family: Crystal-Universe; 
+	src: url('CrystalUniverse-Regular.ttf') format("opentype"); 
+	} 
+
+
 body {
 	background: url('https://media.giphy.com/media/3qePHOEQYRPDG/giphy.gif') no-repeat;
 	background-size: cover;
@@ -7,7 +14,7 @@ body {
 	background-color: rgba(0, 153, 153, 0.4);
 	height: 400px;
 	width: 80%;
-	margin: 10% auto;
+	margin: 5% auto;
 	z-index: 100;
 	color: #ffffff;
 	border: 1px solid rgb(255,51,153); 
@@ -15,6 +22,16 @@ body {
 	padding: 30px;
 }
 
+header {
+	font-family: 'Crystal-Universe';  
+	color: rgba(255,51,153, 0.75);
+	text-align: center;
+}
+
+/*adding a 'border' to letters via stack overflow*/
+header h1 {
+	text-shadow: -1px 0 rgba(0, 153, 153, 0.4), 0 1px rgba(0, 153, 153, 0.4), 1px 0 rgba(0, 153, 153, 0.4), 0 -1px rgba(0, 153, 153, 0.4);
+}
 
 /****** MODAL STYLES ******/
 
