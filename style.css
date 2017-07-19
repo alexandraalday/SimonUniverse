@@ -9,6 +9,10 @@ body {
 	background-size: cover;
 }
 
+li {
+	list-style: none;
+}
+
 .container {
 	background-color: rgba(0, 153, 153, 0.4);
 	height: 400px;
@@ -21,7 +25,11 @@ body {
 	padding: 20px;
 }
 
-/****** HEADER STYLES ******/
+/*********************
+
+ HEADER STYLES 
+
+**********************/
 
 header {
 	font-family: 'Crystal-Universe';  
@@ -41,7 +49,93 @@ header {
 }
 
 
-/****** MODAL STYLES ******/
+
+/*********************
+
+ GEM STYLES 
+
+**********************/
+
+/*With help from https://stackoverflow.com/questions/38916028/css-positioning-absolute-4-diamonds-close-together*/
+
+/*Contains the large diamond shape (#diamonds) which in turn contains the four smaller diamonds*/
+#diamond_container { 
+  position: absolute;
+  width: 20%;
+  height: 20%;
+  left: 0;
+  right: 0;
+  top: 150px;
+  bottom: 0;
+  margin: auto;
+}
+
+/* Big diamond shaped box which contains all 4 diamonds */
+#diamonds {
+  position: absolute;
+  z-index: 5;
+  left: 0; right: 0;
+  top: 0; bottom: 0;
+  margin: auto;
+  width: 100%;
+  height: 0;
+  padding: 50% 0;
+  text-align: center;
+  -ms-transform: rotate(45deg);  -moz-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);  transform: rotate(45deg);
+}
+
+.diamond {
+  position: absolute;
+  width: 49%;
+  height: 49%;
+  transition: .5s;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+/*** TOP DIAMOND ***/
+
+#top-diamond {
+  left: 0; top: 0;
+  border: 2px solid #ffb1a1;
+  background: rgba(255, 177, 161, 0.7);
+}
+
+/*** RIGHT DIAMOND ***/
+
+#right-diamond {
+  right: 0; top: 0;
+  border: 2px solid #ff5e6d;
+  background: rgba(255, 94, 109, 0.7);
+}
+
+/*** LEFT DIAMOND ***/
+
+#left-diamond {
+  left: 0; bottom: 0;
+  border: 2px solid #ffde3f;
+  background: rgba(255, 222, 63, 0.7);
+
+}
+
+/*** BOTTOM DIAMOND ***/
+
+#bottom-diamond {
+  right: 0; bottom: 0;
+  border: 2px solid #1a0000;
+  background: rgba(26, 0, 0, 0.7); 
+}
+
+
+
+
+
+/*********************
+
+ MODAL STYLES 
+
+**********************/
 
 .modal {
     display: none; 
@@ -65,7 +159,7 @@ header {
     width: 80%;
     max-height: 350px;
     overflow: auto;
-    color: black;
+    color: #ffffff;
 }
 
 .close {
@@ -83,7 +177,11 @@ header {
 } 
 
 
-/****** FOOTER STYLES ******/
+/*********************
+
+ FOOTER STYLES 
+
+**********************/
 
 footer {
 	font-family: Arial; 
