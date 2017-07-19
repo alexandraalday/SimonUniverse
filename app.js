@@ -35,18 +35,34 @@ $close.on('click', () => {
 
 $('#top-diamond').on('click', () =>{
 	console.log('top diamond clicked');
+	let $audioElement = $('<audio>');
+    $audioElement.attr('src', 'https://s3-us-west-2.amazonaws.com/simonuniversesounds/simonSound1.mp3');
+    $button.append($audioElement);
+	$audioElement[0].play();
 })
 
 $('#right-diamond').on('click', () =>{
 	console.log('right diamond clicked');
+	let $audioElement = $('<audio>');
+    $audioElement.attr('src', 'https://s3-us-west-2.amazonaws.com/simonuniversesounds/simonSound2.mp3');
+    $button.append($audioElement);
+	$audioElement[0].play();
 })
 
 $('#left-diamond').on('click', () =>{
 	console.log('left diamond clicked');
+    let $audioElement = $('<audio>');
+    $audioElement.attr('src', 'https://s3-us-west-2.amazonaws.com/simonuniversesounds/simonSound3.mp3');
+    $button.append($audioElement);
+	$audioElement[0].play();
 })
 
 $('#bottom-diamond').on('click', () =>{
 	console.log('bottom diamond clicked');
+    let $audioElement = $('<audio>');
+    $audioElement.attr('src', 'https://s3-us-west-2.amazonaws.com/simonuniversesounds/simonSound4.mp3');
+    $button.append($audioElement);
+	$audioElement[0].play();
 })
 
 
