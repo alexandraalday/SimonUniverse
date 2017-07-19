@@ -98,24 +98,24 @@ header {
 
 #top-diamond {
   left: 0; top: 0;
-  border: 2px solid #ffb1a1;
-  background: rgba(255, 177, 161, 0.7);
+  border: 2px solid #b640b1;
+  background: rgba(182, 64, 177, 0.7);
 }
 
 /*** RIGHT DIAMOND ***/
 
 #right-diamond {
   right: 0; top: 0;
-  border: 2px solid #ff5e6d;
-  background: rgba(255, 94, 109, 0.7);
+  border: 2px solid #3a2551;
+  background: rgba(58, 37, 81, 0.7);
 }
 
 /*** LEFT DIAMOND ***/
 
 #left-diamond {
   left: 0; bottom: 0;
-  border: 2px solid #ffde3f;
-  background: rgba(255, 222, 63, 0.7);
+  border: 2px solid #691065;
+  background: rgba(105, 16, 101, 0.7);
 
 }
 
@@ -123,8 +123,8 @@ header {
 
 #bottom-diamond {
   right: 0; bottom: 0;
-  border: 2px solid #1a0000;
-  background: rgba(26, 0, 0, 0.7); 
+  border: 2px solid #3268b2;
+  background: rgba(50, 104, 178, 0.7); 
 }
 
 
