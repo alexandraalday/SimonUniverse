@@ -4,7 +4,6 @@
 	src: url('CrystalUniverse-Regular.ttf') format("opentype"); 
 	} 
 
-
 body {
 	background: url('https://media.giphy.com/media/3qePHOEQYRPDG/giphy.gif') no-repeat;
 	background-size: cover;
@@ -14,24 +13,33 @@ body {
 	background-color: rgba(0, 153, 153, 0.4);
 	height: 400px;
 	width: 80%;
-	margin: 5% auto;
+	margin: 1% auto;
 	z-index: 100;
 	color: #ffffff;
 	border: 1px solid rgb(255,51,153); 
 	border-radius: 40px;
-	padding: 30px;
+	padding: 20px;
 }
+
+/****** HEADER STYLES ******/
 
 header {
 	font-family: 'Crystal-Universe';  
-	color: rgba(255,51,153, 0.75);
+	/*background clip based on from css-tricks 
+	and via this article: http://nimbupani.com/using-background-clip-for-text-with-css-fallback.html;*/
+	background-image: url('https://static.vecteezy.com/system/resources/previews/000/101/239/non_2x/free-abstract-background-7-vector.jpg');
+	filter: brightness(1.5) drop-shadow(-2px 2px 0px rgba(255,255,255,1));
+	color: #b95087;
+	-webkit-text-fill-color: transparent; text-fill-color: transparent;
+	background: -webkit-linear-gradient(transparent, transparent), url('https://static.vecteezy.com/system/resources/previews/000/101/239/non_2x/free-abstract-background-7-vector.jpg');
+	background-size: cover;
+	background: -o-linear-gradient(transparent, transparent);
+	-webkit-background-clip: text; background-clip: text;
+	font-size: 2em;
 	text-align: center;
+	margin: 0; 
 }
 
-/*adding a 'border' to letters via stack overflow*/
-header h1 {
-	text-shadow: -1px 0 rgba(0, 153, 153, 0.4), 0 1px rgba(0, 153, 153, 0.4), 1px 0 rgba(0, 153, 153, 0.4), 0 -1px rgba(0, 153, 153, 0.4);
-}
 
 /****** MODAL STYLES ******/
 
@@ -51,7 +59,7 @@ header h1 {
 
 .modal-content {
     background-color: rgba(153,51,255, 0.4);
-    margin: 15% auto; 
+    margin: 30% auto; 
     padding: 20px;
     border: 1px solid rgba(153,51,255, 0.4);
     width: 80%;
