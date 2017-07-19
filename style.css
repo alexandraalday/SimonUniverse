@@ -95,11 +95,13 @@ header {
 }
 
 /*** TOP DIAMOND ***/
-
+/*inset box shadow via stack overflow*/
 #top-diamond {
   left: 0; top: 0;
   border: 2px solid #b640b1;
   background: rgba(182, 64, 177, 0.7);
+  -webkit-box-shadow: inset 0 0 20px 10px #b640b1;
+  box-shadow: inset 0 0 20px 10px #b640b1;
 }
 
 /*** RIGHT DIAMOND ***/
@@ -108,6 +110,8 @@ header {
   right: 0; top: 0;
   border: 2px solid #3a2551;
   background: rgba(58, 37, 81, 0.7);
+  -webkit-box-shadow: inset 0 0 20px 10px #3a2551;
+  box-shadow: inset 0 0 20px 10px #3a2551;
 }
 
 /*** LEFT DIAMOND ***/
@@ -116,7 +120,8 @@ header {
   left: 0; bottom: 0;
   border: 2px solid #691065;
   background: rgba(105, 16, 101, 0.7);
-
+  -webkit-box-shadow: inset 0 0 20px 10px #691065;
+  box-shadow: inset 0 0 20px 10px #691065;
 }
 
 /*** BOTTOM DIAMOND ***/
@@ -125,6 +130,8 @@ header {
   right: 0; bottom: 0;
   border: 2px solid #3268b2;
   background: rgba(50, 104, 178, 0.7); 
+  -webkit-box-shadow: inset 0 0 20px 10px #3268b2;
+  box-shadow: inset 0 0 20px 10px #3268b2;
 }
 
 
