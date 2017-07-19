@@ -11,6 +11,7 @@ HTML, CSS, JavaScript, jQuery, Velocity JS(?)
 imported a local font - Crystal Universe
 background clip to text is amazeballs!
 really wanted to manually code the gems in CSS
+amazon web services to host sound bites
 
 
 #### installation instructions
