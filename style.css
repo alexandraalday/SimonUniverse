@@ -77,7 +77,23 @@ header {
 
 .close:hover,
 .close:focus {
-    color: rgb(255,51,153);
+    color: rgb(255, 51, 153);
     text-decoration: none;
     cursor: pointer;
 } 
+
+
+/****** FOOTER STYLES ******/
+
+footer {
+	font-family: Arial; 
+	font-weight: bold; 
+	text-align: center;
+	color: rgb(255, 51, 153);
+	margin: 1%;
+}
+
+footer a {
+	color: rgb(0, 153, 153);
+	text-decoration: none;
+}
