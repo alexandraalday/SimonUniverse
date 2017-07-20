@@ -7,19 +7,37 @@ console.log('loaded bro');
 
 let i=0;
 let strict = false;
+let gameActive = false;
+let playerActive = false;
 let round = '';
 let simonArray = [];
 let playerArray = [];
 let setSimonPlay;
+// Assign the buttons to some variables individually and as a group.
+var $topDiamond = $("#top-diamond");
+var $rightDiamond = $("#right-diamond");
+var $leftDiamond = $("#left-diamond");
+var $bottomDiamond = $("#bottom-diamond");
+var $allDiamonds = $(".diamond_container");
 
 
+
+
+// GAME RESET
+
+// reset function
+function gameReset() {
+  simonArray = [];
+  round = 0;
+  playerArray = [];
+  gameActive = false;
+}
 
 
 
 // GAME LOGIC
 
-
-
+// Check for matching arrays
 const checkWinner = (e) => {
   playerArray.push(e.currentTarget);
   let counter = 0;
@@ -31,7 +49,6 @@ const checkWinner = (e) => {
       console.log(playerArray[x], simonArray[x]);
       if (playerArray[x] !== simonArray[x]) {
         if (!strict) { //player can try again
-          i = 0;
           //display a wrong error message on the scoreboard and play a "razz" buzzer sound
           playerArray = []; //reset player array so they can try again
           i = 0;
@@ -39,12 +56,8 @@ const checkWinner = (e) => {
           setSimonPlay = setInterval(simonPlay, 2500);
           return;
         } else if (strict) {
-          i = 0;
           //display a losing message on the scoreboard and play a "razz" buzzer sound
-          playerArray = [];
-          simonArray= [];
-          round = 0;
-          return;
+          gameReset();
         }
       } else if (playerArray[x] === simonArray[x]) {
           counter++
@@ -68,53 +81,71 @@ const checkWinner = (e) => {
     }
   }
 }        
+
+
  
 const simonPlay = () => {
-	// checkWinner();
 //display round text to screen here when create scoreboard
+let sequencer = setInterval(() => {
   if (simonArray[i] === "top-diamond") {
-  	$('#top-sound')[0].play();
-  	$('#top-diamond').addClass("active")
-  	setInterval(function(){
-    	$('#top-diamond').removeClass("active");
-	}, 2000);
+    $('#top-sound')[0].play();
+    $topDiamond.addClass("active")
+    setTimeout(() => {
+      $topDiamond.removeClass("active");
+  }, 1500);
   }
   else if (simonArray[i] === "right-diamond") {
-  		//look into making this a function since you repeat this later in the code
-  	$('#right-sound')[0].play();
-  	$('#right-diamond').addClass("active")
-  	setInterval(function(){
-    	$('#right-diamond').removeClass("active");
-	}, 2000);
+      //look into making this a function since you repeat this later in the code
+    $('#right-sound')[0].play();
+    $rightDiamond.addClass("active")
+    setTimeout(() => {
+      $rightDiamond.removeClass("active");
+  }, 1500);
   }
   else if (simonArray[i] === "left-diamond") {
-  	$('#left-sound')[0].play();
-  	$('#left-diamond').addClass("active")
-  	setInterval(function(){
-    	$('#left-diamond').removeClass("active");
-	}, 2000);
+    $('#left-sound')[0].play();
+    $leftDiamond.addClass("active")
+    setTimeout(() => {
+      $leftDiamond.removeClass("active");
+  }, 1500);
   }
   else if (simonArray[i] === "bottom-diamond") {
-  	$('#bottom-sound')[0].play();
-  	$('#bottom-diamond').addClass("active")
-  	setInterval(function(){
-    	$('#bottom-diamond').removeClass("active");
-	}, 2000);
+    $('#bottom-sound')[0].play();
+    $bottomDiamond.addClass("active")
+    setTimeout(() => {
+      $bottomDiamond.removeClass("active");
+  }, 1500);
   }
-  i++;
-}
+  setTimeout(() => {
+    i++;
+  }, 1800);
+    if (i + 1 === simonArray.length) {
+    clearInterval(simonPlay);
+    playerActive = true;
+    i = 0;
+    }
+}, 2000);
+};
+
 
 
 const startGame = () => {
     //computer selects 20 random colors
     let gemArray = ["top-diamond", "right-diamond", "left-diamond", "bottom-diamond"];
-    for (let g = 0; g < 20; g++) {
+    for (let gem = 0; gem < 20; gem++) {
+      //create a new array of these 20 random gems
       simonArray.push(gemArray[Math.floor(Math.random() * gemArray.length)]);
     }
     round = 1;
+      // diffCheck();
+      // playerSeries = [];
+      // seriesLoop();
     //display round text to screen here when create scoreboard
     setSimonPlay = setInterval(simonPlay, 2500);
 }
+
+
+
 
 
 // INSTRUCTIONS BUTTON AND MODAL
@@ -127,7 +158,7 @@ const $close = $('.close');
 // When the user clicks on the button, open the modal
 // added button sound via help from stack overflow
 $button.on('click', () => {
-	$modal.css('display', "block");
+	$modal.fadeIn();
     let $audioElement = $('<audio>');
     $audioElement.attr('src', 'https://s3-us-west-2.amazonaws.com/simonuniversesounds/220173__gameaudio__spacey-1up-power-up.wav');
     $button.append($audioElement);
@@ -143,37 +174,117 @@ $close.on('click', () => {
 
 // CRYSTAL GEM EVENT LISTENERS
 
-$('#top-diamond').on('click', () =>{
+$topDiamond.on('click', () =>{
 	console.log('top diamond clicked');
   	$('#top-sound')[0].play();
     $('e.currentTarget').hover(function() {
       $(this).toggleClass("active")
     });
-})
+    if (playerActive) {
+    playerArray.push('e.currentTarget');
+    for (let i = 0; i < playerArray.length; i++) {
+      if (playerArray[i] != simonArray[i] && strict) {
+        round = ":(";
+        setTimeout(() => {
+          strictReset();
+        }, 1000);
+      } 
+      else if (playerArray[i] != simonArray[i]) {
+        playerActive = false;
+        count = ":(";
+        setTimeout(() => {
+          round = series.length;
+          seriesLoop();
+          playerArray = [];
+        }, 1000);
+      }
+    }
+  }
+});
 
-$('#right-diamond').on('click', () =>{
+$rightDiamond.on('click', () =>{
 	console.log('right diamond clicked');
   	$('#right-sound')[0].play();
     $('e.currentTarget').hover(function() {
       $(this).toggleClass("active")
     });
-})
+    if (playerActive) {
+    playerArray.push('e.currentTarget');
+    for (let i = 0; i < playerArray.length; i++) {
+      if (playerArray[i] != simonArray[i] && strict) {
+        round = ":(";
+        setTimeout(() => {
+          strictReset();
+        }, 1000);
+      } 
+      else if (playerArray[i] != simonArray[i]) {
+        playerActive = false;
+        count = ":(";
+        setTimeout(() => {
+          round = series.length;
+          seriesLoop();
+          playerArray = [];
+        }, 1000);
+      }
+    }
+  }
+});
 
-$('#left-diamond').on('click', () =>{
+$leftDiamond.on('click', () =>{
 	console.log('left diamond clicked');
   	$('#left-sound')[0].play();
     $('e.currentTarget').hover(function() {
       $(this).toggleClass("active")
     });
-})
+    if (playerActive) {
+    playerArray.push('e.currentTarget');
+    for (let i = 0; i < playerArray.length; i++) {
+      if (playerArray[i] != simonArray[i] && strict) {
+        round = ":(";
+        setTimeout(() => {
+          strictReset();
+        }, 1000);
+      } 
+      else if (playerArray[i] != simonArray[i]) {
+        playerActive = false;
+        round = ":(";
+        setTimeout(() => {
+          round = series.length;
+          seriesLoop();
+          playerArray = [];
+        }, 1000);
+      }
+    }
+  }
+});
 
-$('#bottom-diamond').on('click', () =>{
+$bottomDiamond.on('click', () =>{
 	console.log('bottom diamond clicked');
   	$('#bottom-sound')[0].play();
     $('e.currentTarget').hover(function() {
       $(this).toggleClass("active")
     });
-})
+    if (playerActive) {
+    playerArray.push('e.currentTarget');
+    for (let i = 0; i < playerArray.length; i++) {
+      if (playerArray[i] != simonArray[i] && strict) {
+        round = ":(";
+        setTimeout(() => {
+          strictReset();
+        }, 1000);
+      } 
+      else if (playerArray[i] != simonArray[i]) {
+        playerActive = false;
+        round = ":(";
+        setTimeout(() => {
+          round = series.length;
+          seriesLoop();
+          playerArray = [];
+        }, 1000);
+      }
+    }
+  }
+});
 
 
 
@@ -182,12 +293,15 @@ $('#bottom-diamond').on('click', () =>{
 $('#start').on('click', () => {
 	console.log('start button clicked');
 	$('#start-sound')[0].play();
+  gameActive = true;
 	startGame();
 })
 
+
+
 // STEVEN SAYS EVENT LISTENER
 
-$('img').on('click', () => {
+$('#steven').on('click', () => {
 	console.log("hi! i'm steven");
 	$('#steven-sound')[0].play();
 })

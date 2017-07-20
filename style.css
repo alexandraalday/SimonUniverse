@@ -19,7 +19,7 @@ li {
 	height: 400px;
 	width: 80%;
 	margin: 1% auto;
-	z-index: 100;
+	z-index: 10;
 	color: #ffffff;
 	border: 1px solid rgb(255,51,153); 
 	border-radius: 40px;
@@ -358,7 +358,7 @@ img {
 .modal {
     display: none; 
     position: fixed; 
-    z-index: 3; 
+    z-index: 100; 
     left: 0;
     top: 0;
     width: 100%; 
