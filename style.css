@@ -74,10 +74,9 @@ SCOREBOARD STYLES
 
 **********************/
 
-
-
-
-
+#scoreboard {
+  display: inline-block;
+}
 
 #steven-says {
   position: absolute;
@@ -415,3 +414,67 @@ footer a {
 	color: rgb(0, 153, 153);
 	text-decoration: none;
 }
+
+
+/*********************
+
+ DISPLAY STYLES 
+
+**********************/
+
+.controls {
+  padding: 10px 0;
+  text-align: center;
+  background: #6ab2bf;
+  background: -webkit-radial-gradient(rgba(0, 247, 255, 0), rgba(0, 247, 255, 0.42));
+  border: 1px solid #7bccd5;
+  box-sizing: border-box;
+  width: 180px;
+
+}
+
+#left-control {
+  float: left;
+}
+
+#right-control {
+  float: right;
+}
+
+.option { 
+  text-align: center;
+  flex-wrap: wrap;
+  cursor: pointer;
+  opacity: .25;
+  transition: .3s;
+  display: inline-flex;
+  margin: 0px; 
+  box-sizing: border-box;
+  width: 49%;
+  min-width: 60px;
+}
+
+.option:hover {
+  opacity: 1;
+}
+
+.option i {
+  text-align: center;
+  width: 100%;
+  display: block;
+  font-size: 1em;
+  font-style: normal;
+}
+
+.option span {
+  text-align: center;
+  font-size: .8em;
+  display: block;
+  width: 100%;
+}
+
+.option.active, #rounds {
+    text-shadow: 0px 0px 10px #ffffff;
+    opacity: 1;
+}
+

@@ -68,7 +68,26 @@
       </div>
 	</div>
 
+
+	<div id ="left-control" class="controls">
+        <h4>ROUND</h4>
+        <div id="rounds" class="option"><i id="round">0</i> <span>/20</span></div>
+        <div onclick="restart()" id="replay" class="option playMe">
+          <i id="playIcon">&#9658;</i> <span id="playMsg">RESTART?</span>
+        </div> 
+      </div>
+      
+
+	  <div id="right-control" class="controls">
+	    <h4>MODE</h4>
+	    <div onclick="setMode('strict')"    id="strict"    class="option">       <i>&diams;</i> <span>CRYSTAL GEM   </span></div>
+	    <div onclick="setMode('forgiving')" id="forgiving" class="option active"><i>&starf;</i> <span>NORMAL</span></div>
+	  </div>
+      
+
 </div>
+
+
 
 
 <footer>Made with &hearts; by <a href="#">Alexandra Alday<a></footer>

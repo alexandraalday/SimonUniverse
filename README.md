@@ -13,6 +13,7 @@ HTML, CSS, JavaScript, jQuery, Velocity JS(?)
 -really wanted to manually code the gems in CSS
 -amazon web services to host sound bites
 -keyframe animations for glow effect
+-holy moly getting the correct sequence of events took me an entire day! had to use booleans to let simon know when it was his turn, and when it was the player's turn. 
 
 
 #### installation instructions
@@ -24,5 +25,6 @@ HTML, CSS, JavaScript, jQuery, Velocity JS(?)
 
 
 #### opportunities for improvement
+using velocity for more little steven dude animations would be awesome. 
 
 
