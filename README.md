@@ -1,7 +1,7 @@
 # SimonUniverse
 A Simon and Steven Universe Mashup
 #### link to live site
-alexandraalday.github.io/
+alexandraalday.github.io/SimonUniverse
 
 #### explanations of the technologies used
 HTML, CSS, JavaScript, jQuery, Velocity JS(?)
