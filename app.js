@@ -181,8 +181,17 @@ $('#bottom-diamond').on('click', () =>{
 
 $('#start').on('click', () => {
 	console.log('start button clicked');
+	$('#start-sound')[0].play();
 	startGame();
 })
+
+// STEVEN SAYS EVENT LISTENER
+
+$('img').on('click', () => {
+	console.log("hi! i'm steven");
+	$('#steven-sound')[0].play();
+})
+
 
 
 

@@ -7,6 +7,7 @@
 body {
 	background: url('https://media.giphy.com/media/3qePHOEQYRPDG/giphy.gif') no-repeat;
 	background-size: cover;
+  font-family: Arial;
 }
 
 li {
@@ -25,6 +26,9 @@ li {
 	padding: 20px;
 }
 
+.buttons {
+  text-align: center;
+}
 /*********************
 
  HEADER STYLES 
@@ -49,6 +53,38 @@ header {
 }
 
 
+
+
+/*********************
+
+SCOREBOARD STYLES 
+
+**********************/
+
+
+#steven-says {
+  padding-bottom: 25px;
+}
+
+
+img {
+  height: 100px;
+  width: 100px;
+  animation: float 3s infinite linear;
+}
+
+
+@keyframes float {
+  0% {
+    transform: translatey(0px);
+  }
+  50% {
+    transform: translatey(-20px);
+  }
+  100% {
+    transform: translatey(0px);
+  }
+}
 
 /*********************
 
