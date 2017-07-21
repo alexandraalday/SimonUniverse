@@ -29,7 +29,7 @@
 
 
 
-<div class='container'>
+<div class='container'> <!-- game container -->
 
 <!-- Buttons -->
 	<div class='buttons'>
@@ -37,23 +37,8 @@
 	<button id='instructions'><h4>INSTRUCTIONS</h4></button>
 	</div>
 
-	<!-- The Instructions Modal -->
-		<div id="instructionsModal" class="modal">
-		  <div class="modal-content">
-		    <span class="close">&times;</span>
-		    <h3>Instructions</h3>
-		    <ul>
-		    	<li>&starf; Press the START button. You will receive the first signal. Repeat the signal by pressing the same color gem.</li>
-		    	<li>&starf; The computer will duplicate the signal and add one. Repeat these two signals by pressing the same color gems, in order.</li>
-		    	<li>&starf; The computer will duplicate these first two signals and add one.</li>
-		    	<li>&starf; Continue playing as long as you can repeat each sequence of signals correctly.</li>
-		    	<li>&starf; If you select Normal Mode, when you fail to repeat a sequence exactly, the computer will respond with a "RAZZ" sound. This means you are incorrect and will receive the same sequence and a second try to repeat the correct sentence.</li>
-		    	<li>&starf; If you select Crystal Gem mode, when you fail to repeat a sequence exactly, the computer will respond with a "RAZZ" sound. This means you lost, and the game will start over at round 1.</li>
-		    </ul>
-		  </div>
 
-		</div> 
-
+<!-- Steven Scoreboard -->
 	<div class='scoreboard'>
 		<div id='display'></div>
 		<div id='steven-says'>Click the START button to begin!</div>
@@ -89,6 +74,46 @@
       
 
 </div> <!-- end container -->
+
+
+
+<!-- The Instructions Modal -->
+		<div id="instructionsModal" class="modal">
+		  <div class="modal-content">
+		    <span class="close">&times;</span>
+		    <h3>Instructions</h3>
+		    <ul>
+		    	<li>&starf; Press the START button. You will receive the first signal. Repeat the signal by pressing the same color gem.</li>
+		    	<li>&starf; The computer will duplicate the signal and add one. Repeat these two signals by pressing the same color gems, in order.</li>
+		    	<li>&starf; The computer will duplicate these first two signals and add one.</li>
+		    	<li>&starf; Continue playing as long as you can repeat each sequence of signals correctly.</li>
+		    	<li>&starf; If you select Normal Mode, when you fail to repeat a sequence exactly, the computer will respond with a "RAZZ" sound. This means you are incorrect and will receive the same sequence and a second try to repeat the correct sentence.</li>
+		    	<li>&starf; If you select Crystal Gem mode, when you fail to repeat a sequence exactly, the computer will respond with a "RAZZ" sound. This means you lost, and the game will start over at round 1.</li>
+		    </ul>
+		  </div>
+		</div> 
+
+
+<!-- The Win Modal -->
+		<div id="winModal" class="modal">
+		  <div class="modal-content">
+		    <span class="close">&times;</span>
+		    <h3>WINNER!</h3>
+		    You did it! You beat the crystal gems!
+		  </div>
+		</div> 
+
+
+<!-- The Lose Modal -->
+		<div id="loseModal" class="modal">
+		  <div class="modal-content">
+		    <span class="close">&times;</span>
+		    <h3>TRY AGAIN!</h3>
+		    I bet you'll get it next time!
+		  </div>
+		</div> 
+
+
 
 
 

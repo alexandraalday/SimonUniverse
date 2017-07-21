@@ -125,14 +125,19 @@ function updateRound() { // display current round on page
 *******************/
 
 function setMode(mode){ // Sets the game mode to the mode passed (Either crystal gem or normal)
-  //in progress
-}
+ if (mode === '#strict'){
+  strict = true; //game mode is now crystal gem hero mode 
+ }
+ else if (mode === '#forgiving') {
+  strict = false; // game mode is now in normal mode
+ }
+};
 
 /****************
 // RESTART GAME
 ****************/
 
-const restart = () => { // Starts a new game
+const restartGame = () => { // Starts a new game
   if(started === false){ // If this is the first game played
     started = true; 
     } // then it's been started
@@ -152,9 +157,9 @@ const restart = () => { // Starts a new game
 
 const checkWin = () => {
   if(currentGame.userInputs >= sequence.current.length){ 
-    // show winning animation here
+    youWin(); //call the winning modal
     setTimeout(function() {
-      restart()
+      restartGame();
       }, 5000); // Wait a bit, then restart the game
   } else if(currentGame.userInputs >= currentGame.round){ // Else if the player has cleared the current round (but not won the whole game)
       currentGame.round++; // Increase the round
@@ -185,7 +190,7 @@ const guess = (diamond) => { // Checks a users guess (diamond clicked on)
       // add error chime here
       if(strict === true){ 
         setTimeout(function(){
-         restart(); 
+         restartGame(); 
          }, 1000); // Wait for the error chime to finish, then restart the game
       } 
       else {
@@ -216,14 +221,14 @@ function allGlow(){
 // INSTRUCTIONS BUTTON AND MODAL
 ********************************/
 
-const $modal = $('.modal');
+const $instructionsModal = $('#instructionsModal');
 const $button = $('#instructions');
 const $close = $('.close');
 
 // When the user clicks on the button, open the modal
 // added button sound via help from stack overflow
 $button.on('click', () => {
-	$modal.fadeIn();
+	$instructionsModal.fadeIn();
     let $audioElement = $('<audio>');
     $audioElement.attr('src', 'https://s3-us-west-2.amazonaws.com/simonuniversesounds/220173__gameaudio__spacey-1up-power-up.wav');
     $button.append($audioElement);
@@ -232,7 +237,28 @@ $button.on('click', () => {
 
 // When the user clicks on <span> (x), close the modal
 $close.on('click', () => {
-    $modal.fadeOut();
+    $instructionsModal.fadeOut();
+});
+
+/********************************
+// WIN MODAL
+********************************/
+
+const $winModal = $('#winModal');
+const $winClose = $('.close');
+
+const youWin = () => {
+// When the user wins, open the modal
+  $winModal.fadeIn();
+    let $audioElement = $('<audio>');
+    $audioElement.attr('src', 'https://s3-us-west-2.amazonaws.com/simonuniversesounds/220173__gameaudio__spacey-1up-power-up.wav');
+    $button.append($audioElement);
+  $audioElement[0].play();
+}
+
+// When the user clicks on <span> (x), close the modal
+$winClose.on('click', () => {
+    $winModal.fadeOut();
 });
 
 
@@ -287,7 +313,7 @@ document.onkeydown = function (e) {
 $('#start').on('click', () => {
 	console.log('start button clicked');
 	$('#start-sound')[0].play();
-  restart();
+  restartGame();
 })
 
 
@@ -301,7 +327,33 @@ $('#steven').on('click', () => {
 })
 
 
+/******************************
+// RESTART BUTTON EVENT LISTENER
+******************************/
 
+$('#replay').on('click', () => {
+  console.log('replay button clicked');
+  $('#start-sound')[0].play();
+  restartGame();
+})
+
+
+
+ /******************************
+// GAME MODE EVENT LISTENERS
+******************************/
+
+$('#strict').on('click', () => {
+  console.log('strict button clicked');
+  $('#start-sound')[0].play();
+  setMode('#strict');
+})
+
+$('#forgiving').on('click', () => {
+  console.log('forgiving button clicked');
+  $('#start-sound')[0].play();
+  setMode('#forgiving');
+})
 
 
 
