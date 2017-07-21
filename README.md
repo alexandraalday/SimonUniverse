@@ -4,7 +4,7 @@ A Simon and Steven Universe Mashup
 alexandraalday.github.io/SimonUniverse
 
 #### explanations of the technologies used
-HTML, CSS, JavaScript, jQuery, Velocity JS(?)
+HTML, CSS, JavaScript, jQuery, Velocity , typewriter plugin
 
 
 #### the approach taken/ technical details
@@ -13,7 +13,8 @@ HTML, CSS, JavaScript, jQuery, Velocity JS(?)
 -really wanted to manually code the gems in CSS
 -amazon web services to host sound bites
 -keyframe animations for glow effect
--holy moly getting the correct sequence of events took me an entire day! had to use booleans to let simon know when it was his turn, and when it was the player's turn. 
+-holy moly getting the correct sequence of events took me an entire day! had to use booleans to let simon know when it was his turn, and when it was the player's turn. lots of callbacks to keep things flowing in correct order.
+-velocity js to animate the diamonds on win and restart 
 
 
 #### installation instructions

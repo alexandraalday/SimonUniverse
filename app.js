@@ -1,6 +1,14 @@
 $(() => {
 // console.log('loaded bro');
 
+    $('#steven-says').typewrite({
+        // 'callback': function(){
+        // },
+        'delay': 100
+    });
+
+
+
 /********************************
 // SOME GLOBAL VARIABLES MY DUDE
 ********************************/
@@ -103,11 +111,11 @@ let sequence  = {
                 this.index = 0;   // Play sequence from the beginning
                 this.current = [];// Empty the previous sequence
                 let currentSequence = this.current; // in order to pass through for loop
-                for (let g = 0; g < 20; g++) {
+                for (let g = 0; g < 10; g++) {  //resetting to only 10 levels for presentation purposes. normallu will be 20 levels. 
                     let randomGem = allDiamonds[Math.floor(Math.random() * allDiamonds.length)]
                     //create a new array of these 20 random gems
                     currentSequence.push(randomGem);
-                    console.log(currentSequence[g]); // so we can cheat
+                    console.log(currentSequence[g].diamond); // so we can cheat
                   }
               }
 };
@@ -120,18 +128,6 @@ function updateRound() { // display current round on page
     gameElements.round.innerHTML = currentGame.round; 
 }
 
-/*******************
-// CHANGE GAME MODE
-*******************/
-
-function setMode(mode){ // Sets the game mode to the mode passed (Either crystal gem or normal)
- if (mode === '#strict'){
-  strict = true; //game mode is now crystal gem hero mode 
- }
- else if (mode === '#forgiving') {
-  strict = false; // game mode is now in normal mode
- }
-};
 
 /****************
 // RESTART GAME
@@ -147,16 +143,43 @@ const restartGame = () => { // Starts a new game
     "userInputs": 0
   }
   updateRound();       // Update the round counter to 1
+  allGlow();
   sequence.generate(); // Generate a new sequence
   sequence.play();     // Play the new sequence
 }
+
+/*******************
+// CHANGE GAME MODE
+*******************/
+
+function setMode(mode){ // Sets the game mode to the mode passed (Either crystal gem or normal)
+ if (mode === '#strict'){
+  strict = true; //game mode is now crystal gem hero mode 
+ }
+ else if (mode === '#forgiving') {
+  strict = false; // game mode is now in normal mode
+ }
+};
+
+
+
+/***********************
+// SPIN ME RIGHT ROUND
+***********************/
+
+const spinMoves = () => {
+  $('#diamonds').velocity({rotateZ: "+=405" }); //because it is already rotated +45deg
+}
+
 
 /********************
 // CHECK FOR WINNER
 ********************/
 
 const checkWin = () => {
-  if(currentGame.userInputs >= sequence.current.length){ 
+  if(currentGame.userInputs >= sequence.current.length){
+    allGlow();
+    spinMoves(); 
     youWin(); //call the winning modal
     setTimeout(function() {
       restartGame();
@@ -175,7 +198,7 @@ const checkWin = () => {
 
 const guess = (diamond) => { // Checks a users guess (diamond clicked on)
   if(sequence.current.length === 0){ 
-    diamond.chime(); // If the game hasn't started it acts like a music instrument!
+    diamond.chime(); //ding dong ding
   }
     if(sequence.playing || !started){ 
       return; // If sequence is currently playing, don't do anything
@@ -187,20 +210,31 @@ const guess = (diamond) => { // Checks a users guess (diamond clicked on)
       checkWin(); // did they win?
     } 
   else { // Otherwise they guessed incorrectly
-      // add error chime here
       if(strict === true){ 
+        youLose();
         setTimeout(function(){
+          $('#loseModal').fadeOut();
          restartGame(); 
-         }, 1000); // Wait for the error chime to finish, then restart the game
+         }, 4000); // Wait a bit for modal, then restart the game
       } 
       else {
         currentGame.userInputs = 0; // reset player's guess
         sequence.index = 0;         // restart from the beginning 
-        //add error chime here
+        $('#oops-sound')[0].play();
+        $('#steven-says').html('s! Try again.').typewrite({
+          'callback': function(){
+          },
+          'delay': 100
+        });
         setTimeout(function(){  // Wait for the error chime to finish, then replay
+        $('#steven-says').html('You can do it!').typewrite({
+          'callback': function(){
+          },
+          'delay': 100
+        });
           sequence.playing = false; 
           sequence.play(); 
-        }, 1000);
+        }, 2000);
       }
   }
 }
@@ -247,7 +281,7 @@ $close.on('click', () => {
 const youWin = () => {
 // When the user wins, open the modal
   $('#winModal').fadeIn();
-  $('win-sound')[0].play();
+  $('#win-sound')[0].play();
 }
 // When the user clicks on <span> (x), close the modal
 $close.on('click', () => {
@@ -261,11 +295,11 @@ $close.on('click', () => {
 const youLose = () => {
 // When the user loses, open the modal
   $('#loseModal').fadeIn();
-  $('lose-sound')[0].play();
+  $('#lose-sound')[0].play();
 }
 // When the user clicks on <span> (x), close the modal
 $close.on('click', () => {
-    $closeModal.fadeOut();
+    $('#loseModal').fadeOut();
 });
 
 
@@ -318,8 +352,12 @@ document.onkeydown = function (e) {
 ******************************/
 
 $('#start').on('click', () => {
-	console.log('start button clicked');
 	$('#start-sound')[0].play();
+  $('#steven-says').html('Woah, that was so coooool!').typewrite({
+    'callback': function(){
+    },
+    'delay': 100
+  });
   restartGame();
 })
 
@@ -329,7 +367,6 @@ $('#start').on('click', () => {
 ******************************/
 
 $('#steven').on('click', () => {
-	console.log("hi! i'm steven");
 	$('#steven-sound')[0].play();
 })
 
@@ -339,8 +376,7 @@ $('#steven').on('click', () => {
 ******************************/
 
 $('#replay').on('click', () => {
-  console.log('replay button clicked');
-  $('#start-sound')[0].play();
+  $('#restart-sound')[0].play();
   restartGame();
 })
 
@@ -351,14 +387,12 @@ $('#replay').on('click', () => {
 ******************************/
 
 $('#strict').on('click', () => {
-  console.log('strict button clicked');
-  $('#start-sound')[0].play();
+  $('#mode-sound')[0].play();
   setMode('#strict');
 })
 
 $('#forgiving').on('click', () => {
-  console.log('forgiving button clicked');
-  $('#start-sound')[0].play();
+  $('#mode-sound')[0].play();
   setMode('#forgiving');
 })
 

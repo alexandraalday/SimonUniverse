@@ -11,6 +11,8 @@
 			  src="https://code.jquery.com/jquery-3.2.1.min.js"
 			  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
 			  crossorigin="anonymous"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.0/velocity.min.js"></script>
+	<script type="text/javascript" src="typewriter.js"></script>		  
 	<script type="text/javascript" src="app.js"></script>
 </head>
 <body>
@@ -20,14 +22,18 @@
 </header>
 
 <!-- Audio Catalog -->
-  <audio id="start-sound" src="https://s3-us-west-2.amazonaws.com/simonuniversesounds/sfx_stage_resultsscreen_100percent+%23286.wav" type="audio/mpeg"></audio>
-  <audio id="steven-sound" src="https://s3-us-west-2.amazonaws.com/simonuniversesounds/sfx_steven_findloot4+%231.wav" type="audio/mpeg"></audio>
-  <audio id="top-sound" src="https://s3-us-west-2.amazonaws.com/simonuniversesounds/sfx_stage_puzzledoor_tap1+%2320.wav" type="audio/mpeg"></audio>
-  <audio id="right-sound" src="https://s3-us-west-2.amazonaws.com/simonuniversesounds/sfx_stage_puzzledoor_tap2+%2316.wav" type="audio/mpeg"></audio>
-  <audio id="left-sound" src="https://s3-us-west-2.amazonaws.com/simonuniversesounds/sfx_stage_puzzledoor_tap3+%2319.wav" type="audio/mpeg"></audio>
-  <audio id="bottom-sound" src="https://s3-us-west-2.amazonaws.com/simonuniversesounds/sfx_stage_puzzledoor_tap6+%2314.wav" type="audio/mpeg"></audio>
-  <audio id="win-sound" src="https://s3-us-west-2.amazonaws.com/simonuniversesounds/sfx_battle_win+%23211.mp3" type="audio/mpeg"></audio>
-  <audio id="lose-sound" src="https://s3-us-west-2.amazonaws.com/simonuniversesounds/sfx_battle_lose+%23209.mp3" type="audio/mpeg"></audio>
+	<audio id="start-sound" src="https://s3-us-west-2.amazonaws.com/simonuniversesounds/sfx_stage_resultsscreen_100percent+%23286.wav" type="audio/mpeg"></audio>
+	<audio id="steven-sound" src="https://s3-us-west-2.amazonaws.com/simonuniversesounds/sfx_steven_findloot4+%231.wav" type="audio/mpeg"></audio>
+	<audio id="top-sound" src="https://s3-us-west-2.amazonaws.com/simonuniversesounds/sfx_stage_puzzledoor_tap1+%2320.wav" type="audio/mpeg"></audio>
+	<audio id="right-sound" src="https://s3-us-west-2.amazonaws.com/simonuniversesounds/sfx_stage_puzzledoor_tap2+%2316.wav" type="audio/mpeg"></audio>
+	<audio id="left-sound" src="https://s3-us-west-2.amazonaws.com/simonuniversesounds/sfx_stage_puzzledoor_tap3+%2319.wav" type="audio/mpeg"></audio>
+	<audio id="bottom-sound" src="https://s3-us-west-2.amazonaws.com/simonuniversesounds/sfx_stage_puzzledoor_tap6+%2314.wav" type="audio/mpeg"></audio>
+	<audio id="win-sound" src="https://s3-us-west-2.amazonaws.com/simonuniversesounds/sfx_battle_win+%23211.mp3" type="audio/mpeg"></audio>
+	<audio id="lose-sound" src="https://s3-us-west-2.amazonaws.com/simonuniversesounds/sfx_battle_lose+%23209.mp3" type="audio/mpeg"></audio>
+	<audio id="oops-sound" src="https://s3-us-west-2.amazonaws.com/simonuniversesounds/sfx_steven_confused4+%231.wav" type="audio/mpeg"></audio>
+	<audio id="mode-sound" src="https://s3-us-west-2.amazonaws.com/simonuniversesounds/sfx_gui_button_press+%2388.wav" type="audio/mpeg"></audio>
+	<audio id="restart-sound" src="https://s3-us-west-2.amazonaws.com/simonuniversesounds/sfx_achievementsound+%231.wav" type="audio/mpeg"></audio>
+
 
 
 
@@ -44,7 +50,7 @@
 <!-- Steven Scoreboard -->
 	<div class='scoreboard'>
 		<div id='display'></div>
-		<div id='steven-says'>Click the START button to begin!</div>
+		<div id='steven-says'>"Oh man, a simon game!"</div>
 		<img id="steven" src="http://orig06.deviantart.net/c67e/f/2013/325/f/e/kawaii_steven__steven_universe__by_amis0129-d6v353q.png">
 	</div>
 
@@ -86,12 +92,12 @@
 		    <span class="close">&times;</span>
 		    <h3>Instructions</h3>
 		    <ul>
-		    	<li>&starf; Press the START button. You will receive the first signal. Repeat the signal by pressing the same color gem.</li>
-		    	<li>&starf; The computer will duplicate the signal and add one. Repeat these two signals by pressing the same color gems, in order.</li>
-		    	<li>&starf; The computer will duplicate these first two signals and add one.</li>
-		    	<li>&starf; Continue playing as long as you can repeat each sequence of signals correctly.</li>
-		    	<li>&starf; If you select Normal Mode, when you fail to repeat a sequence exactly, the computer will respond with a "RAZZ" sound. This means you are incorrect and will receive the same sequence and a second try to repeat the correct sentence.</li>
-		    	<li>&starf; If you select Crystal Gem mode, when you fail to repeat a sequence exactly, the computer will respond with a "RAZZ" sound. This means you lost, and the game will start over at round 1.</li>
+		    	<li>&starf; Press the START button. You will receive the first gem. Repeat the gem by pressing the same color gem or by using the arrow keys.</li>
+		    	<li>&starf; The computer will duplicate the gem and add one. Repeat these two gems by pressing the same color gems, in order.</li>
+		    	<li>&starf; The computer will duplicate these first two gems and add one.</li>
+		    	<li>&starf; Continue playing as long as you can repeat each sequence of gems correctly.</li>
+		    	<li>&starf; If you select Normal Mode, when you fail to repeat a sequence exactly, simon will repeat the same sequence and give you another try.</li>
+		    	<li>&starf; If you select Crystal Gem mode, when you fail to repeat a sequence exactly, the game will start over at round 1.</li>
 		    </ul>
 		  </div>
 		</div> 
@@ -102,7 +108,7 @@
 		  <div class="modal-content">
 		    <span class="close">&times;</span>
 		    <h3>WINNER!</h3>
-		    You did it! You beat the crystal gems!
+		    You did it! You beat the crystal gems! 
 		  </div>
 		</div> 
 
@@ -112,7 +118,7 @@
 		  <div class="modal-content">
 		    <span class="close">&times;</span>
 		    <h3>TRY AGAIN!</h3>
-		    I bet you'll get it next time!
+		    I bet you'll get it next time! The game will restart shortly. 
 		  </div>
 		</div> 
 

@@ -97,6 +97,7 @@ SCOREBOARD STYLES
 }
 
 #steven-says {
+  display: none;
   position: absolute;
   padding-bottom: 40px;
   text-align: center;
@@ -396,7 +397,7 @@ img {
     width: 50%;
     max-height: 400px;
     overflow: auto;
-    color: #000000;
+    color: rgb(255, 51, 153);
 }
 
 .close {
