@@ -4,7 +4,7 @@ A Simon and Steven Universe Mashup
 alexandraalday.github.io/SimonUniverse
 
 #### explanations of the technologies used
-HTML, CSS, JavaScript, jQuery, Velocity , typewriter plugin
+HTML, CSS, JavaScript, jQuery, Velocity , typewriter plugin, font awesome
 
 
 #### the approach taken/ technical details
@@ -26,6 +26,8 @@ HTML, CSS, JavaScript, jQuery, Velocity , typewriter plugin
 
 
 #### opportunities for improvement
-using velocity for more little steven dude animations would be awesome. 
+-using velocity for more little steven dude animations would be awesome. 
+-keep a high score page using local storage, then display at the end and allow users to enter initials like arcade games
+-an intro screen animation as landing page
 
 
