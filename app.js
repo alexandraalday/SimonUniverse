@@ -60,7 +60,7 @@ Diamond.prototype.glow = function(){ // inherited by ALL diamond instances
 const topDiamond =  new Diamond("top-diamond", "top");
 const rightDiamond = new Diamond("right-diamond", "right");
 const leftDiamond = new Diamond("left-diamond", "left");
-const bottomDiamond = new Diamond("#bottom-diamond", "bottom");
+const bottomDiamond = new Diamond("bottom-diamond", "bottom");
 const allDiamonds = [topDiamond, rightDiamond, leftDiamond, rightDiamond];
 
 /***************
@@ -244,21 +244,28 @@ $close.on('click', () => {
 // WIN MODAL
 ********************************/
 
-const $winModal = $('#winModal');
-const $winClose = $('.close');
-
 const youWin = () => {
 // When the user wins, open the modal
-  $winModal.fadeIn();
-    let $audioElement = $('<audio>');
-    $audioElement.attr('src', 'https://s3-us-west-2.amazonaws.com/simonuniversesounds/220173__gameaudio__spacey-1up-power-up.wav');
-    $button.append($audioElement);
-  $audioElement[0].play();
+  $('#winModal').fadeIn();
+  $('win-sound')[0].play();
 }
-
 // When the user clicks on <span> (x), close the modal
-$winClose.on('click', () => {
-    $winModal.fadeOut();
+$close.on('click', () => {
+    $('#winModal').fadeOut();
+});
+
+/********************************
+// LOSE MODAL
+********************************/
+
+const youLose = () => {
+// When the user loses, open the modal
+  $('#loseModal').fadeIn();
+  $('lose-sound')[0].play();
+}
+// When the user clicks on <span> (x), close the modal
+$close.on('click', () => {
+    $closeModal.fadeOut();
 });
 
 
@@ -290,7 +297,7 @@ $('#bottom-diamond').on('click', () =>{
 document.onkeydown = function (e) { 
     e = e || window.event;
     if(sequence.playing){return;}
-    if (e.keyCode == 38) { // Up 
+    if (e.keyCode == 38) { // up 
         guess(topDiamond);
         topDiamond.glow();
     } else if (e.keyCode == 37) { // left
