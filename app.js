@@ -1,21 +1,21 @@
 $(() => {
+// console.log('loaded bro');
 
-
-console.log('loaded bro');
-
+/********************************
 // SOME GLOBAL VARIABLES MY DUDE
-
+********************************/
+let started = false;
+let strict = false; //mode is 'normal' by default
 let currentGame = {
   "round": 1,
   "speed": 2000,
   "userInputs": 0
 }
-let strict = false; //mode is 'normal' by default
-let started = false;
 
 
+/****************
 // PLAY SOUND
-
+****************/
 const playSound = (sound) => {
   if (sound === "top"){
     $('#top-sound')[0].play();
@@ -31,12 +31,12 @@ const playSound = (sound) => {
   }
 }
 
-
+/*************************************************
 // DIAMOND CLASS AND METHODS FOR SOUNDS AND GLOW
-
- class Diamond {
+*************************************************/
+class Diamond {
   constructor(diamond, sound) {
-    this.diamond = document.getElementById(diamond)
+    this.diamond = document.getElementById(diamond);
     this.chime = () => {
     playSound(sound);
     }; 
@@ -54,19 +54,18 @@ Diamond.prototype.glow = function(){ // inherited by ALL diamond instances
     var glowing = this; // variable so we can pass through the timeout function
     setTimeout(function() {
       glowing.glowOff()
-    }, duration); // After some time, remove the glowing class
+    }, duration); // After a little bit, remove the glowing class
   };
-
-
+//hi ho
 const topDiamond =  new Diamond("top-diamond", "top");
 const rightDiamond = new Diamond("right-diamond", "right");
 const leftDiamond = new Diamond("left-diamond", "left");
 const bottomDiamond = new Diamond("#bottom-diamond", "bottom");
-
 const allDiamonds = [topDiamond, rightDiamond, leftDiamond, rightDiamond];
 
-
+/***************
 // GAME OBJECT
+***************/
 
 const gameElements = { 
   "round"     : document.getElementById("round"),    
@@ -75,8 +74,9 @@ const gameElements = {
   "strict"    : document.getElementById("strict")     
 }
 
-
+/*************************
 // SIMON SEQUENCE OBJECT
+*************************/
 
 let sequence  = { 
   "current" : [], 
@@ -107,26 +107,30 @@ let sequence  = {
                     let randomGem = allDiamonds[Math.floor(Math.random() * allDiamonds.length)]
                     //create a new array of these 20 random gems
                     currentSequence.push(randomGem);
+                    console.log(currentSequence[g]); // so we can cheat
                   }
               }
 };
 
-
+/****************
 // UPDATE ROUND
+****************/
 
 function updateRound() { // display current round on page
     gameElements.round.innerHTML = currentGame.round; 
 }
 
-
+/*******************
 // CHANGE GAME MODE
+*******************/
 
 function setMode(mode){ // Sets the game mode to the mode passed (Either crystal gem or normal)
   //in progress
 }
 
-
+/****************
 // RESTART GAME
+****************/
 
 const restart = () => { // Starts a new game
   if(started === false){ // If this is the first game played
@@ -142,8 +146,9 @@ const restart = () => { // Starts a new game
   sequence.play();     // Play the new sequence
 }
 
-
+/********************
 // CHECK FOR WINNER
+********************/
 
 const checkWin = () => {
   if(currentGame.userInputs >= sequence.current.length){ 
@@ -159,7 +164,9 @@ const checkWin = () => {
   }
 }
 
+/***************
 // PLAYER GUESS
+***************/
 
 const guess = (diamond) => { // Checks a users guess (diamond clicked on)
   if(sequence.current.length === 0){ 
@@ -193,19 +200,21 @@ const guess = (diamond) => { // Checks a users guess (diamond clicked on)
   }
 }
 
-
+/***********************************
 // ALL GLOW FOR FUTURE WIN SEQUENCE
+***********************************/
 
-// function allGlow(){ 
-//     topDiamond.glow();
-//     leftDiamond.glow();
-//     rightDiamond.glow();
-//     bottomDiamond.glow();
-// }
+function allGlow(){ 
+    topDiamond.glow();
+    leftDiamond.glow();
+    rightDiamond.glow();
+    bottomDiamond.glow();
+}
 
 
-
+/********************************
 // INSTRUCTIONS BUTTON AND MODAL
+********************************/
 
 const $modal = $('.modal');
 const $button = $('#instructions');
@@ -223,40 +232,38 @@ $button.on('click', () => {
 
 // When the user clicks on <span> (x), close the modal
 $close.on('click', () => {
-    $modal.css('display', "none");
+    $modal.fadeOut();
 });
 
 
+/******************************
 // CRYSTAL GEM EVENT LISTENERS
+******************************/
 
 $('#top-diamond').on('click', () =>{
-	console.log('top diamond clicked');
   guess(topDiamond)
 });
 
 $('#right-diamond').on('click', () =>{
-	console.log('right diamond clicked');
   guess(rightDiamond)
 });
 
 $('#left-diamond').on('click', () =>{
-	console.log('left diamond clicked');
   guess(leftDiamond)
 });
 
 $('#bottom-diamond').on('click', () =>{
-	console.log('bottom diamond clicked');
   guess(bottomDiamond)
 });
 
 
-
+/*************************
 // NOW WITH KEYPRESSES!
+*************************/
 
-
-document.onkeydown = function (e) {
+document.onkeydown = function (e) { 
     e = e || window.event;
-     if(sequence.playing){return;}
+    if(sequence.playing){return;}
     if (e.keyCode == 38) { // Up 
         guess(topDiamond);
         topDiamond.glow();
@@ -273,8 +280,9 @@ document.onkeydown = function (e) {
 };
 
 
-
+/******************************
 // START BUTTON EVENT LISTENER
+******************************/
 
 $('#start').on('click', () => {
 	console.log('start button clicked');
@@ -283,8 +291,9 @@ $('#start').on('click', () => {
 })
 
 
-
+/******************************
 // STEVEN SAYS EVENT LISTENER
+******************************/
 
 $('#steven').on('click', () => {
 	console.log("hi! i'm steven");

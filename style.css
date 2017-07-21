@@ -17,7 +17,7 @@ li {
 .container {
 	background-color: rgba(0, 153, 153, 0.4);
 	height: 400px;
-	width: 80%;
+	width: 75%;
 	margin: 1% auto;
 	z-index: 10;
 	color: #ffffff;
@@ -33,7 +33,6 @@ li {
 #start, #instructions {
   background: #3498db;
   width: 180px;
-  padding: 10px;
   margin: 10px;
   text-align: center;
   text-transform: uppercase;
@@ -41,6 +40,11 @@ li {
   border-radius: 3px;
   border: 1px solid #42e8f4;
 }
+
+#start:hover, #instructions:hover {
+  background:rgba(52, 107, 237, 0.7);
+}
+
 
 /*********************
 
@@ -76,11 +80,13 @@ SCOREBOARD STYLES
 
 #scoreboard {
   display: inline-block;
+  text-align: center;
 }
 
 #steven-says {
   position: absolute;
   padding-bottom: 25px;
+  text-align: center;
 }
 
 
@@ -89,6 +95,7 @@ img {
   width: 100px;
   animation: float 3s infinite linear;
   padding-top: 50px;
+  padding-left: 5%;
 }
 
 
@@ -115,8 +122,8 @@ img {
 /*Contains the large diamond shape (#diamonds) which in turn contains the four smaller diamonds*/
 #diamond_container { 
   position: relative;
-  width: 20%;
-  height: 20%;
+  width: 25%;
+  height: 25%;
   left: 0;
   right: 0;
   top: 15%;
@@ -423,11 +430,10 @@ footer a {
 **********************/
 
 .controls {
-  padding: 10px 0;
   text-align: center;
-  background: #6ab2bf;
-  background: -webkit-radial-gradient(rgba(0, 247, 255, 0), rgba(0, 247, 255, 0.42));
-  border: 1px solid #7bccd5;
+  background:rgba(52, 107, 237, 0.7);
+  border: 1px solid #72bff9;
+  border-radius: 3px;
   box-sizing: border-box;
   width: 180px;
 
@@ -449,20 +455,20 @@ footer a {
   transition: .3s;
   display: inline-flex;
   margin: 0px; 
-  box-sizing: border-box;
-  width: 49%;
+  width: 40%;
   min-width: 60px;
 }
 
 .option:hover {
   opacity: 1;
+  text-shadow: 0px 0px 10px #ffffff;
 }
 
 .option i {
   text-align: center;
   width: 100%;
   display: block;
-  font-size: 1em;
+  font-size: 2em;
   font-style: normal;
 }
 
@@ -471,10 +477,10 @@ footer a {
   font-size: .8em;
   display: block;
   width: 100%;
+  padding-bottom: 10px;
 }
 
 .option.active, #rounds {
     text-shadow: 0px 0px 10px #ffffff;
     opacity: 1;
 }
-

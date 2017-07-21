@@ -19,6 +19,7 @@
 	<h1>Simon Universe</h1>
 </header>
 
+<!-- Audio Catalog -->
   <audio id="start-sound" src="https://s3-us-west-2.amazonaws.com/simonuniversesounds/sfx_stage_resultsscreen_100percent+%23286.wav" type="audio/mpeg"></audio>
   <audio id="steven-sound" src="https://s3-us-west-2.amazonaws.com/simonuniversesounds/sfx_steven_findloot4+%231.wav" type="audio/mpeg"></audio>
   <audio id="top-sound" src="https://s3-us-west-2.amazonaws.com/simonuniversesounds/sfx_stage_puzzledoor_tap1+%2320.wav" type="audio/mpeg"></audio>
@@ -26,26 +27,28 @@
   <audio id="left-sound" src="https://s3-us-west-2.amazonaws.com/simonuniversesounds/sfx_stage_puzzledoor_tap3+%2319.wav" type="audio/mpeg"></audio>
   <audio id="bottom-sound" src="https://s3-us-west-2.amazonaws.com/simonuniversesounds/sfx_stage_puzzledoor_tap6+%2314.wav" type="audio/mpeg"></audio>
 
+
+
 <div class='container'>
+
+<!-- Buttons -->
 	<div class='buttons'>
-	<button id='start'>START</button>
-	<button id='instructions'>INSTRUCTIONS</button>
+	<button id='start'><h4>START</h4></button>
+	<button id='instructions'><h4>INSTRUCTIONS</h4></button>
 	</div>
 
-		<!-- The Instructions Modal -->
+	<!-- The Instructions Modal -->
 		<div id="instructionsModal" class="modal">
-
-		  <!-- Modal content -->
 		  <div class="modal-content">
 		    <span class="close">&times;</span>
 		    <h3>Instructions</h3>
 		    <ul>
-		    	<li>&#9734; Press the START button. You will receive the first signal. Repeat the signal by pressing the same color gem.</li>
-		    	<li>&#9734; The computer will duplicate the signal and add one. Repeat these two signals by pressing the same color gems, in order.</li>
-		    	<li>&#9734; The computer will duplicate these first two signals and add one.</li>
-		    	<li>&#9734; Continue playing as long as you can repeat each sequence of signals correctly.</li>
-		    	<li>&#9734; If you select Normal Mode, when you fail to repeat a sequence exactly, the computer will respond with a "RAZZ" sound. This means you are incorrect and will receive the same sequence and a second try to repeat the correct sentence.</li>
-		    	<li>&#9734; If you select Crystal Gem mode, when you fail to repeat a sequence exactly, the computer will respond with a "RAZZ" sound. This means you lost, and the game will start over at round 1.</li>
+		    	<li>&starf; Press the START button. You will receive the first signal. Repeat the signal by pressing the same color gem.</li>
+		    	<li>&starf; The computer will duplicate the signal and add one. Repeat these two signals by pressing the same color gems, in order.</li>
+		    	<li>&starf; The computer will duplicate these first two signals and add one.</li>
+		    	<li>&starf; Continue playing as long as you can repeat each sequence of signals correctly.</li>
+		    	<li>&starf; If you select Normal Mode, when you fail to repeat a sequence exactly, the computer will respond with a "RAZZ" sound. This means you are incorrect and will receive the same sequence and a second try to repeat the correct sentence.</li>
+		    	<li>&starf; If you select Crystal Gem mode, when you fail to repeat a sequence exactly, the computer will respond with a "RAZZ" sound. This means you lost, and the game will start over at round 1.</li>
 		    </ul>
 		  </div>
 
@@ -57,35 +60,35 @@
 		<img id="steven" src="http://orig06.deviantart.net/c67e/f/2013/325/f/e/kawaii_steven__steven_universe__by_amis0129-d6v353q.png">
 	</div>
 
+
+<!-- Diamond Game Board -->
 	<div class='gameboard'>
-<div id="diamond_container">
-        <div id="diamonds">
-          <div id="top-diamond" class="diamond"></div>
-          <div id="right-diamond" class="diamond"></div>
-          <div id="left-diamond" class="diamond"></div>
-          <div id="bottom-diamond" class="diamond"></div>
+		<div id="diamond_container">
+       	 <div id="diamonds">
+	          <div id="top-diamond" class="diamond"></div>
+	          <div id="right-diamond" class="diamond"></div>
+	          <div id="left-diamond" class="diamond"></div>
+	          <div id="bottom-diamond" class="diamond"></div>
         </div>
       </div>
 	</div>
 
 
+<!-- 	Game Control Boxes -->
 	<div id ="left-control" class="controls">
         <h4>ROUND</h4>
         <div id="rounds" class="option"><i id="round">0</i> <span>/20</span></div>
-        <div onclick="restart()" id="replay" class="option playMe">
-          <i id="playIcon">&#9658;</i> <span id="playMsg">RESTART?</span>
-        </div> 
-      </div>
+        <div id="replay" class="option playMe"><i id="playIcon">&#9658;</i><span id="playMsg">RESTART GAME?</span></div> 
+    </div>
+      
+	<div id="right-control" class="controls">
+	    <h4>GAME MODE</h4>
+	    <div id="strict" class="option"><i>&diams;</i><span>CRYSTAL GEM</span></div>
+	    <div id="forgiving" class="option active"><i>&starf;</i> <span>NORMAL</span></div>
+	</div>
       
 
-	  <div id="right-control" class="controls">
-	    <h4>MODE</h4>
-	    <div onclick="setMode('strict')"    id="strict"    class="option">       <i>&diams;</i> <span>CRYSTAL GEM   </span></div>
-	    <div onclick="setMode('forgiving')" id="forgiving" class="option active"><i>&starf;</i> <span>NORMAL</span></div>
-	  </div>
-      
-
-</div>
+</div> <!-- end container -->
 
 
 
