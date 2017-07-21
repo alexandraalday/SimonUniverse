@@ -464,7 +464,6 @@ footer a {
 .option { 
   text-align: center;
   flex-wrap: wrap;
-  cursor: pointer;
   opacity: .25;
   transition: .3s;
   display: inline-flex;
@@ -472,6 +471,7 @@ footer a {
   width: 40%;
   min-width: 60px;
 }
+
 
 .option:hover {
   opacity: 1;

@@ -386,13 +386,19 @@ $('#replay').on('click', () => {
 // GAME MODE EVENT LISTENERS
 ******************************/
 
+//toggles active to display which mode the player is currently on
+
 $('#strict').on('click', () => {
   $('#mode-sound')[0].play();
+  $('#strict').toggleClass("active");
+  $('#forgiving').toggleClass("active");
   setMode('#strict');
 })
 
 $('#forgiving').on('click', () => {
   $('#mode-sound')[0].play();
+  $('#strict').toggleClass("active");
+  $('#forgiving').toggleClass("active");
   setMode('#forgiving');
 })
 
