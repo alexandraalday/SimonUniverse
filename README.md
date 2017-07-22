@@ -19,7 +19,8 @@ HTML, CSS, JavaScript, jQuery, Velocity , typewriter plugin, font awesome
 #### main screen
 ![screencapture-file-users-alexandra-dev-simonuniverse-index-html-1500684224709](https://user-images.githubusercontent.com/17508245/28486892-3b4545f6-6e3c-11e7-8659-482f92f0d86e.png)
 
-
+#### instructions screen
+![screencapture-file-users-alexandra-dev-simonuniverse-index-html-1500684569183](https://user-images.githubusercontent.com/17508245/28486951-fc22ce56-6e3c-11e7-989f-e37278113bb6.png)
 
 #### unsolved problems/ technical challenges
 * when doing animations for hover effects, it was only active on the initial button click. Jim to the rescue with the .hover() method and toggling it active, inactive. 
