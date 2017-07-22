@@ -1,9 +1,12 @@
 $(() => {
 // console.log('loaded bro');
 
+
+/********************************
+ // SAY HELLO, STEVEN
+********************************/
+
     $('#steven-says').typewrite({
-        // 'callback': function(){
-        // },
         'delay': 100
     });
 
@@ -13,11 +16,10 @@ $(() => {
 // SOME GLOBAL VARIABLES MY DUDE
 ********************************/
 let started = false;
-let strict = false; //mode is 'normal' by default
+let hero = false; //mode is 'normal' by default
 let currentGame = {
   "round": 1,
-  "speed": 2000,
-  "userInputs": 0
+  "userGuess": 0
 }
 
 
@@ -55,16 +57,16 @@ Diamond.prototype.glowOff = function(){ // inherited by ALL diamond instances
       this.diamond.classList.remove("active");
 }
 
-Diamond.prototype.glow = function(){ // inherited by ALL diamond instances
-  let duration = currentGame.speed - 500;
-    this.glowOff(); // make sure it's not glowing first, duh!
+Diamond.prototype.glow = function(){ // inherited by ALL diamond instances;
+    this.glowOff(); // make sure it's not glowing first, this causes it to not glow on future instances
     this.diamond.classList.add("active");
-    var glowing = this; // variable so we can pass through the timeout function
+    var glowing = this; // variable so we can pass to the timeout function
     setTimeout(function() {
       glowing.glowOff()
-    }, duration); // After a little bit, remove the glowing class
+    }, 1500); // remove the glowing class after a lil bit
   };
-//hi ho
+
+//hi ho hi ho
 const topDiamond =  new Diamond("top-diamond", "top");
 const rightDiamond = new Diamond("right-diamond", "right");
 const leftDiamond = new Diamond("left-diamond", "left");
@@ -78,34 +80,34 @@ const allDiamonds = [topDiamond, rightDiamond, leftDiamond, rightDiamond];
 const gameElements = { 
   "round"     : document.getElementById("round"),    
   "diamonds"  : document.getElementById("diamonds"),  
-  "forgiving" : document.getElementById("forgiving"), 
-  "strict"    : document.getElementById("strict")     
+  "normal" : document.getElementById("normal"), 
+  "hero"    : document.getElementById("hero")     
 }
 
 /*************************
 // SIMON SEQUENCE OBJECT
 *************************/
 
-let sequence  = { 
+let simonSequence  = { 
   "current" : [], 
   "playing" : false,         
   "index"   : 0,           
-  "play"    : function(){  // Play  sequence
-                this.playing = true;        // The sequence is currently playing (user cannot guess during this time)
-                currentGame.userInputs = 0; // Reset the user's input to the start of the sequence
-                let _this =  this; // 'this' will be undefined in the timer function so we're storing it in "_this" 
+  "play"    : function(){  
+                this.playing = true;        // currently playing (user cannot guess during this time)
+                currentGame.userGuess = 0; // set the user's input back to zero
+                let tempSequenceVariable =  this; // so we can pass to timeout function
     
-                setTimeout(function() {// Wait a second then loop again, going through the sequence
-                  let currentDiamond = _this.current[_this.index];
+                setTimeout(function() {// wait and then play sequence
+                  let currentDiamond = tempSequenceVariable.current[tempSequenceVariable.index];
                   currentDiamond.glow();   
                   currentDiamond.chime();
-                  _this.index++;             //  increment the counter
-                  if (_this.index < currentGame.round) { //  if the counter < the current round, call the loop function
-                    _this.play();           //  again which will trigger another sequence play
+                  tempSequenceVariable.index++;             //  increment the counter
+                  if (tempSequenceVariable.index < currentGame.round) { //  if the counter < the current round, call the loop function
+                    tempSequenceVariable.play();           //  again which will trigger another sequence play
                   } else {
-                    _this.playing = false; // when sequence isn't playing, the user can now guess
+                    tempSequenceVariable.playing = false; // when sequence isn't playing, the user can now guess
                   }                   
-                }, currentGame.speed +500) // The speed of the timer
+                }, 2500) // speed of the timeout
               },
   "generate": function(){ // Generate a random sequence
                 this.index = 0;   // Play sequence from the beginning
@@ -115,7 +117,7 @@ let sequence  = {
                     let randomGem = allDiamonds[Math.floor(Math.random() * allDiamonds.length)]
                     //create a new array of these 20 random gems
                     currentSequence.push(randomGem);
-                    console.log(currentSequence[g].diamond); // so we can cheat
+                    console.log(currentSequence[g].diamond); // so we can cheat :) 
                   }
               }
 };
@@ -133,19 +135,18 @@ function updateRound() { // display current round on page
 // RESTART GAME
 ****************/
 
-const restartGame = () => { // Starts a new game
-  if(started === false){ // If this is the first game played
+const restartGame = () => { // new game
+  if(started === false){ // if this is the first game played set started to true
     started = true; 
-    } // then it's been started
-    currentGame =  { // Reset to game defaults
+    } // else it's been started
+    currentGame =  { // reset values
     "round": 1,
-    "speed": 1000,
-    "userInputs": 0
+    "userGuess": 0
   }
-  updateRound();       // Update the round counter to 1
+  updateRound();       // update round
   allGlow();
-  sequence.generate(); // Generate a new sequence
-  sequence.play();     // Play the new sequence
+  simonSequence.generate(); // new sequence
+  simonSequence.play();     // play sequence
 }
 
 /*******************
@@ -153,11 +154,11 @@ const restartGame = () => { // Starts a new game
 *******************/
 
 function setMode(mode){ // Sets the game mode to the mode passed (Either crystal gem or normal)
- if (mode === '#strict'){
-  strict = true; //game mode is now crystal gem hero mode 
+ if (mode === '#hero'){
+  hero = true; //game mode is now crystal gem hero mode 
  }
- else if (mode === '#forgiving') {
-  strict = false; // game mode is now in normal mode
+ else if (mode === '#normal') {
+  hero = false; // game mode is now in normal mode
  }
 };
 
@@ -177,18 +178,18 @@ const spinMoves = () => {
 ********************/
 
 const checkWin = () => {
-  if(currentGame.userInputs >= sequence.current.length){
+  if(currentGame.userGuess >= simonSequence.current.length){
     allGlow();
     spinMoves(); 
     youWin(); //call the winning modal
     setTimeout(function() {
       restartGame();
       }, 5000); // Wait a bit, then restart the game
-  } else if(currentGame.userInputs >= currentGame.round){ // Else if the player has cleared the current round (but not won the whole game)
-      currentGame.round++; // Increase the round
-      updateRound();       // Update the round text on screen
-      sequence.index = 0;  // Reset the sequence index to the beginning
-      sequence.play();     // And play the sequence again
+  } else if(currentGame.userGuess >= currentGame.round){ // player cleared round, but not completed all levels
+      currentGame.round++; // move to next round
+      updateRound();      
+      simonSequence.index = 0;  // reset the sequence index to the beginning
+      simonSequence.play();     // play the sequence
   }
 }
 
@@ -196,44 +197,40 @@ const checkWin = () => {
 // PLAYER GUESS
 ***************/
 
-const guess = (diamond) => { // Checks a users guess (diamond clicked on)
-  if(sequence.current.length === 0){ 
+const guess = (diamond) => { // checks a users guess (diamond clicked on)
+  if(simonSequence.current.length === 0){ 
     diamond.chime(); //ding dong ding
   }
-    if(sequence.playing || !started){ 
-      return; // If sequence is currently playing, don't do anything
+    if(simonSequence.playing || !started){ 
+      return; // don't do anything if sequence is currently playing
     } 
-    if(sequence.current[currentGame.userInputs] === diamond){ // incorrect guess
-      currentGame.userInputs++; // Increase the user's input (steps)
+    if(simonSequence.current[currentGame.userGuess] === diamond){ // incorrect guess
+      currentGame.userGuess++; // increase input
       diamond.chime(); 
       diamond.glow();
       checkWin(); // did they win?
     } 
-  else { // Otherwise they guessed incorrectly
-      if(strict === true){ 
+  else { // they guessed incorrectly
+      if(hero === true){ 
         youLose();
-        setTimeout(function(){
+        setTimeout(() => {
           $('#loseModal').fadeOut();
          restartGame(); 
-         }, 4000); // Wait a bit for modal, then restart the game
+         }, 4000); // wait a bit for modal to be read, then restart the game
       } 
       else {
-        currentGame.userInputs = 0; // reset player's guess
-        sequence.index = 0;         // restart from the beginning 
+        currentGame.userGuess = 0; // reset player's guess input
+        simonSequence.index = 0;         // restart current sequence
         $('#oops-sound')[0].play();
-        $('#steven-says').html('s! Try again.').typewrite({
-          'callback': function(){
-          },
+        $('#steven-says').html('Ooops! Try again.').typewrite({
           'delay': 100
         });
-        setTimeout(function(){  // Wait for the error chime to finish, then replay
+        setTimeout(() => {  // wait for the error sound to finish, then replay sequence
         $('#steven-says').html('You can do it!').typewrite({
-          'callback': function(){
-          },
           'delay': 100
         });
-          sequence.playing = false; 
-          sequence.play(); 
+          simonSequence.playing = false; 
+          simonSequence.play(); 
         }, 2000);
       }
   }
@@ -243,7 +240,7 @@ const guess = (diamond) => { // Checks a users guess (diamond clicked on)
 // ALL GLOW FOR FUTURE WIN SEQUENCE
 ***********************************/
 
-function allGlow(){ 
+const allGlow = () => { 
     topDiamond.glow();
     leftDiamond.glow();
     rightDiamond.glow();
@@ -259,7 +256,7 @@ const $instructionsModal = $('#instructionsModal');
 const $button = $('#instructions');
 const $close = $('.close');
 
-// When the user clicks on the button, open the modal
+// when the user clicks on the button, open the modal
 // added button sound via help from stack overflow
 $button.on('click', () => {
 	$instructionsModal.fadeIn();
@@ -269,7 +266,7 @@ $button.on('click', () => {
 	$audioElement[0].play();
 });
 
-// When the user clicks on <span> (x), close the modal
+// when the user clicks on <span> (x), close the modal
 $close.on('click', () => {
     $instructionsModal.fadeOut();
 });
@@ -279,11 +276,11 @@ $close.on('click', () => {
 ********************************/
 
 const youWin = () => {
-// When the user wins, open the modal
+// when the user wins, open the modal
   $('#winModal').fadeIn();
   $('#win-sound')[0].play();
 }
-// When the user clicks on <span> (x), close the modal
+// when the user clicks on <span> (x), close the modal
 $close.on('click', () => {
     $('#winModal').fadeOut();
 });
@@ -293,11 +290,11 @@ $close.on('click', () => {
 ********************************/
 
 const youLose = () => {
-// When the user loses, open the modal
+// when the user loses, open the modal
   $('#loseModal').fadeIn();
   $('#lose-sound')[0].play();
 }
-// When the user clicks on <span> (x), close the modal
+// when the user clicks on <span> (x), close the modal
 $close.on('click', () => {
     $('#loseModal').fadeOut();
 });
@@ -328,9 +325,11 @@ $('#bottom-diamond').on('click', () =>{
 // NOW WITH KEYPRESSES!
 *************************/
 
-document.onkeydown = function (e) { 
+document.onkeydown = (e) => { 
     e = e || window.event;
-    if(sequence.playing){return;}
+    if(simonSequence.playing){
+      return;  // don't do anything if the sequence is playing
+    }
     if (e.keyCode == 38) { // up 
         guess(topDiamond);
         topDiamond.glow();
@@ -354,8 +353,6 @@ document.onkeydown = function (e) {
 $('#start').on('click', () => {
 	$('#start-sound')[0].play();
   $('#steven-says').html('Woah, that was so coooool!').typewrite({
-    'callback': function(){
-    },
     'delay': 100
   });
   restartGame();
@@ -388,18 +385,18 @@ $('#replay').on('click', () => {
 
 //toggles active to display which mode the player is currently on
 
-$('#strict').on('click', () => {
+$('#hero').on('click', () => {
   $('#mode-sound')[0].play();
-  $('#strict').toggleClass("active");
-  $('#forgiving').toggleClass("active");
-  setMode('#strict');
+  $('#hero').toggleClass("active");
+  $('#normal').toggleClass("active");
+  setMode('#hero');
 })
 
-$('#forgiving').on('click', () => {
+$('#normal').on('click', () => {
   $('#mode-sound')[0].play();
-  $('#strict').toggleClass("active");
-  $('#forgiving').toggleClass("active");
-  setMode('#forgiving');
+  $('#hero').toggleClass("active");
+  $('#normal').toggleClass("active");
+  setMode('#normal');
 })
 
 
