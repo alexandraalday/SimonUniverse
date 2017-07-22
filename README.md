@@ -4,12 +4,13 @@ A Simon and Steven Universe Mashup
 alexandraalday.github.io/SimonUniverse
 
 #### explanations of the technologies used
-HTML, CSS, JavaScript, jQuery, Velocity , typewriter plugin, font awesome
+HTML, CSS, JavaScript, jQuery, Velocity , Typewriter plugin, Font Awesome
 
 
 #### the approach taken/ technical details
 * imported a local font - Crystal Universe
-* background clip to text is amazeballs!
+* gif background
+* background clip to text will change your life
 * really wanted to manually code the gems in CSS
 * amazon web services to host sound bites
 * keyframe animations for glow effect
@@ -30,7 +31,6 @@ HTML, CSS, JavaScript, jQuery, Velocity , typewriter plugin, font awesome
 
 #### unsolved problems/ technical challenges
 * when doing animations for hover effects, it was only active on the initial button click. Jim to the rescue with the .hover() method and toggling it active, inactive. 
-
 
 #### opportunities for improvement
 * using velocity for more little steven dude animations would be awesome. 
