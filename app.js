@@ -107,19 +107,19 @@ let simonSequence  = {
                   } else {
                     tempSequenceVariable.playing = false; // when sequence isn't playing, the user can now guess
                   }                   
-                }, 2500) // speed of the timeout
+                }, 2000) // speed of the timeout
               },
   "generate": function(){ // Generate a random sequence
                 this.index = 0;   // Play sequence from the beginning
                 this.current = [];// Empty the previous sequence
                 let currentSequence = this.current; // in order to pass through for loop
-                for (let g = 0; g < 10; g++) {  //resetting to only 10 levels for presentation purposes. normallu will be 20 levels. 
+                for (let g = 0; g < 5; g++) {  //resetting to only 5 levels for presentation purposes. normally will be 20 levels. 
                     let randomGem = allDiamonds[Math.floor(Math.random() * allDiamonds.length)]
                     //create a new array of these 20 random gems
                     currentSequence.push(randomGem);
                     console.log(currentSequence[g].diamond); // so we can cheat :) 
                   }
-              }
+            }
 };
 
 /****************
