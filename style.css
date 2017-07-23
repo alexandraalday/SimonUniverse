@@ -480,3 +480,7 @@ footer a {
   text-decoration: none;
 }
 
+footer ul, footer li {
+  display: inline-block;
+}
+
