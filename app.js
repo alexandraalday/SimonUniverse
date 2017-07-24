@@ -63,7 +63,7 @@ Diamond.prototype.glow = function(){ // inherited by ALL diamond instances;
     var glowing = this; // variable so we can pass to the timeout function
     setTimeout(function() {
       glowing.glowOff()
-    }, 1500); // remove the glowing class after a lil bit
+    }, 800); // remove the glowing class after a lil bit
   };
 
 //hi ho hi ho
@@ -107,13 +107,13 @@ let simonSequence  = {
                   } else {
                     tempSequenceVariable.playing = false; // when sequence isn't playing, the user can now guess
                   }                   
-                }, 2000) // speed of the timeout
+                }, 1300) // speed of the timeout
               },
   "generate": function(){ // Generate a random sequence
                 this.index = 0;   // Play sequence from the beginning
                 this.current = [];// Empty the previous sequence
                 let currentSequence = this.current; // in order to pass through for loop
-                for (let g = 0; g < 5; g++) {  //resetting to only 5 levels for presentation purposes. normally will be 20 levels. 
+                for (let g = 0; g < 3; g++) {  //resetting to only 3 levels for presentation purposes. normally will be 20 levels. 
                     let randomGem = allDiamonds[Math.floor(Math.random() * allDiamonds.length)]
                     //create a new array of these 20 random gems
                     currentSequence.push(randomGem);
@@ -231,7 +231,7 @@ const guess = (diamond) => { // checks a users guess (diamond clicked on)
         });
           simonSequence.playing = false; 
           simonSequence.play(); 
-        }, 2000);
+        }, 1800);
       }
   }
 }
