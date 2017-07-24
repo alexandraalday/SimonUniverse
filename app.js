@@ -63,7 +63,7 @@ Diamond.prototype.glow = function(){ // inherited by ALL diamond instances;
     var glowing = this; // variable so we can pass to the timeout function
     setTimeout(function() {
       glowing.glowOff()
-    }, 800); // remove the glowing class after a lil bit
+    }, 1500); // remove the glowing class after a lil bit
   };
 
 //hi ho hi ho
@@ -72,6 +72,7 @@ const rightDiamond = new Diamond("right-diamond", "right");
 const leftDiamond = new Diamond("left-diamond", "left");
 const bottomDiamond = new Diamond("bottom-diamond", "bottom");
 const allDiamonds = [topDiamond, rightDiamond, leftDiamond, rightDiamond];
+
 
 /***************
 // GAME OBJECT
@@ -107,7 +108,7 @@ let simonSequence  = {
                   } else {
                     tempSequenceVariable.playing = false; // when sequence isn't playing, the user can now guess
                   }                   
-                }, 1300) // speed of the timeout
+                }, 2000) // speed of the timeout
               },
   "generate": function(){ // Generate a random sequence
                 this.index = 0;   // Play sequence from the beginning
