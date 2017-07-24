@@ -108,7 +108,7 @@ let simonSequence  = {
                   } else {
                     tempSequenceVariable.playing = false; // when sequence isn't playing, the user can now guess
                   }                   
-                }, 2000) // speed of the timeout
+                }, 2200) // speed of the timeout
               },
   "generate": function(){ // Generate a random sequence
                 this.index = 0;   // Play sequence from the beginning
