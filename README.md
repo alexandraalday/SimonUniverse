@@ -30,7 +30,8 @@ HTML, CSS, JavaScript, jQuery, Velocity , Typewriter plugin, Font Awesome
 ![screencapture-file-users-alexandra-dev-simonuniverse-index-html-1500684948729](https://user-images.githubusercontent.com/17508245/28487009-de5d4472-6e3d-11e7-8851-f071aff1b3c4.png)
 
 #### unsolved problems/ technical challenges
-* when doing animations for hover effects, it was only active on the initial button click. Jim to the rescue with the .hover() method and toggling it active, inactive. 
+* when doing animations for hover effects, it was only active on the initial button click. Jim to the rescue with the .hover() method and toggling it active, inactive.
+* firefox continues to be difficult with absolute positioning 
 
 #### opportunities for improvement
 * using velocity for more little steven dude animations would be awesome. 
