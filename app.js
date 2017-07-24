@@ -114,7 +114,7 @@ let simonSequence  = {
                 this.index = 0;   // Play sequence from the beginning
                 this.current = [];// Empty the previous sequence
                 let currentSequence = this.current; // in order to pass through for loop
-                for (let g = 0; g < 3; g++) {  //resetting to only 3 levels for presentation purposes. normally will be 20 levels. 
+                for (let g = 0; g < 20; g++) {  //resetting to 20 levels, good luck!
                     let randomGem = allDiamonds[Math.floor(Math.random() * allDiamonds.length)]
                     //create a new array of these 20 random gems
                     currentSequence.push(randomGem);
