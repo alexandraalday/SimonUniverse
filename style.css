@@ -94,8 +94,9 @@ SCOREBOARD STYLES
 **********************/
 
 #scoreboard {
-  display: inline-block;
+  display: flex;
   text-align: center;
+  width: 50%;
 }
 
 #steven-says {
@@ -142,7 +143,7 @@ img {
   height: 25%;
   left: 0;
   right: 0;
-  top: 20%;
+  top: 0;
   bottom: 0;
   margin: auto;
 }
@@ -151,14 +152,22 @@ img {
   position: absolute;
   z-index: 5;
   left: 0; right: 0;
-  top:100px; bottom: 0;
+  top: 100px; 
+  bottom: 20px;
   margin: auto;
   width: 100%;
+  -moz-width: 50%;
   height: 0;
   padding: 50% 0;
   text-align: center;
   -ms-transform: rotate(45deg);  -moz-transform: rotate(45deg);
   -webkit-transform: rotate(45deg);  transform: rotate(45deg);
+}
+
+@-moz-document url-prefix() { 
+  #diamonds {
+    top:-90px;
+  }
 }
 
 .diamond {
