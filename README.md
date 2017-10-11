@@ -19,7 +19,7 @@ A quick little Simon game X Steven Universe Mashup using only front end technolo
 
 ### Features in Progress
  - [ ] Using velocity for more little steven dude animations would be awesome. 
- - [ ] Build a backedn server to keep high scores, then display high scores at the end and allow users to enter initials like old school arcade games
+ - [ ] Build a backend server to keep high scores, then display top 10 scores at the end and allow users to enter initials like old school arcade games
  - [ ] Create an intro screen animation as landing splash page
  - [ ] Better styling and animations for modals
 
